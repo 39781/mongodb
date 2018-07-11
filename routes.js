@@ -11,7 +11,9 @@ var url 			= require('url');
 module.exports = function(router, mongoose){
 
 	router.post('/createCollection',function(req, res){
-		var schemas = Object.keys(req.body);
+		var schema 	= 	mongoose.Schema({name:String});
+			var model	=	mongoose.model("collection1", schema);
+		/*var schemas = Object.keys(req.body);
 		var l = schemas.length;
 		for(i=0;i<=l;i++){
 			var schema 	= 	mongoose.Schema({name:String});
@@ -22,7 +24,7 @@ module.exports = function(router, mongoose){
 				: "I don't have a name";
 				console.log(greeting);
 			}		
-		}		
+		}*/		
 		res.send('create collectied');
 		res.end();
 	})
