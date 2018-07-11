@@ -15,7 +15,7 @@ module.exports = function(router, mongoose){
 		var l = schemas.length;
 		for(i=0;i<=l;i++){
 			var schema 	= 	mongoose.Schema(req.body[schemas[i]]);
-			var model	=	mongoose.model(schemas[i], schema);.
+			var model	=	mongoose.model(schemas[i], schema);
 			schema.methods.speak = function () {
 			  var greeting = this.name
 				? "Collection name is " + this.name
