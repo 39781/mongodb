@@ -8,7 +8,7 @@ var url 			= require('url');
 
 //console.log(config,'mongodb://'+config.mongoDB.user+':'+config.mongoDB.pass+'@ds135061.mlab.com:35061/testdb_hari');
 
-module.exports = function(mongoose){
+module.exports = function(router, mongoose){
 
 	router.post('/createCollection',function(req, res){
 		//var Kitten = mongoose.model('Kitten', kittySchema);
