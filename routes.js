@@ -1,5 +1,5 @@
 var express 		= require('express');
-var router			= express.Router();	 
+//var router			= express.Router();	 
 var fs 				= require("fs");	
 var request			= require('request');
 var config			= require('./config.js');
@@ -11,8 +11,15 @@ var url 			= require('url');
 module.exports = function(router, mongoose){
 
 	router.post('/createCollection',function(req, res){
-		//var Kitten = mongoose.model('Kitten', kittySchema);
-		res.send('create collection');
+		var schema 	= 	mongoose.Schema(req.body.schema);
+		var model	=	mongoose.model(collectionName, schema);.
+		schema.methods.speak = function () {
+		  var greeting = this.name
+			? "Collection name is " + this.name
+			: "I don't have a name";
+			console.log(greeting);
+		}		
+		res.send('create collectied');
 		res.end();
 	})
 
