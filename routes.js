@@ -9,28 +9,24 @@ var url 			= require('url');
 //console.log(config,'mongodb://'+config.mongoDB.user+':'+config.mongoDB.pass+'@ds135061.mlab.com:35061/testdb_hari');
 
 module.exports = function(router, mongoose){
-
-	router.post('/createCollection',function(req, res){
-		var schema 	= 	mongoose.Schema({name:String});
-			var model	=	mongoose.model("collection1", schema);
-		/*var schemas = Object.keys(req.body);
-		var l = schemas.length;
-		for(i=0;i<=l;i++){
-			var schema 	= 	mongoose.Schema({name:String});
-			var model	=	mongoose.model(schemas[i], schema);
-			schema.methods.speak = function () {
-			  var greeting = this.name
-				? "Collection name is " + this.name
-				: "I don't have a name";
-				console.log(greeting);
-			}		
-		}*/		
-		res.send('create collectied');
-		res.end();
-	})
-
-	router.post('/create',function(){
-		
+	const Schema = mongoose.Schema,
+    ObjectId = Schema.ObjectId;
+	
+	router.post('/createUser',function(req, res){
+		config.schemas.users.userId = ObjectId;
+		var schema 	= 	mongoose.Schema(config.schemas.users);
+		var model	=	mongoose.model('users', schema);
+		var doc		=	new model(req.body);
+		doc.save(function (err, fluffy) {
+			if (err){
+				res.status(400);
+				res.send('user creation failed');			
+			}else{
+				res.status(200);
+				res.send('user creation success');			
+			}
+			res.end();
+		});
 	});
 
 
