@@ -11,13 +11,17 @@ var url 			= require('url');
 module.exports = function(router, mongoose){
 
 	router.post('/createCollection',function(req, res){
-		var schema 	= 	mongoose.Schema(req.body.schema);
-		var model	=	mongoose.model(collectionName, schema);.
-		schema.methods.speak = function () {
-		  var greeting = this.name
-			? "Collection name is " + this.name
-			: "I don't have a name";
-			console.log(greeting);
+		var schemas = Object.keys(req.body);
+		var l = schemas.length;
+		for(i=0;i<=l;i++){
+			var schema 	= 	mongoose.Schema(req.body[schemas[i]]);
+			var model	=	mongoose.model(schemas[i], schema);.
+			schema.methods.speak = function () {
+			  var greeting = this.name
+				? "Collection name is " + this.name
+				: "I don't have a name";
+				console.log(greeting);
+			}		
 		}		
 		res.send('create collectied');
 		res.end();
