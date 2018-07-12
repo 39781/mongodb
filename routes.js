@@ -12,6 +12,7 @@ module.exports = function(router, mongoose, models){
 	router.post('/createUser',function(req, res){
 		const Schema = mongoose.Schema,
 		ObjectId = Schema.ObjectId;
+		console.log(req.body);
 		req.body._id = ObjectId(req.body._id)
 		console.log(req.body);
 		var doc	=	new models.User(req.body);
