@@ -8,10 +8,7 @@ var url 			= require('url');
 
 //console.log(config,'mongodb://'+config.mongoDB.user+':'+config.mongoDB.pass+'@ds135061.mlab.com:35061/testdb_hari');
 
-module.exports = function(router, mongoose, models){
-	const Schema = mongoose.Schema,
-    ObjectId = Schema.ObjectId;
-	
+module.exports = function(router, mongoose, models){		
 	router.post('/createUser',function(req, res){
 		var doc		=	new models.User(req.body);
 		doc.save(function (err, doc) {
