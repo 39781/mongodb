@@ -10,6 +10,10 @@ var url 			= require('url');
 
 module.exports = function(router, mongoose, models){		
 	router.post('/createUser',function(req, res){
+		const Schema = mongoose.Schema,
+		ObjectId = Schema.ObjectId;
+		req.body._id = ObjectId(req.body._id)
+		
 		var doc		=	new models.User(req.body);
 		doc.save(function (err, doc) {
 			if (err){
