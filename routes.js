@@ -35,8 +35,15 @@ module.exports = function(router, mongoose, models){
 	});
 
 
-	router.post('/find',function(){
-		
+	router.post('/findUser',function(req, res){
+		var doc	=	new models.User();
+		var cursor = Person.find(req.body).cursor();
+		cursor.on('data', function(doc) {
+			res.json(doc).end();
+		});
+		cursor.on('close', function() {
+		  console.log('cursor closed');
+		});
 	});
 
 	router.post('/delete',function(){
