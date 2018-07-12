@@ -13,8 +13,8 @@ module.exports = function(router, mongoose, models){
 		const Schema = mongoose.Schema,
 		ObjectId = Schema.ObjectId;
 		req.body._id = ObjectId(req.body._id)
-		
-		var doc		=	new models.User(req.body);
+		console.log(req.body);
+		var doc	=	new models.User(req.body);
 		doc.save(function (err, doc) {
 			if (err){
 				console.log(err);
