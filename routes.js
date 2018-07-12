@@ -13,7 +13,7 @@ module.exports = function(router, mongoose, models){
 		//const Schema = mongoose.Schema,
 	//	ObjectId = Schema.ObjectId;
 		console.log(req.body);
-		req.body._id = mongoose.Types.ObjectId(req.body._id)
+		//req.body._id = mongoose.Types.ObjectId(req.body._id)
 		console.log(req.body);
 		var doc	=	new models.User(req.body);
 		doc.save(function (err, doc) {
