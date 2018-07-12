@@ -14,7 +14,7 @@ module.exports = function(router, mongoose, models){
 		doc.save(function (err, doc) {
 			if (err){
 				res.status(400);
-				res.send('user creation failed');			
+				res.send('user creation failed',err);			
 			}else{
 				res.status(200);
 				res.send('user creation success');			
