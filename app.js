@@ -23,7 +23,8 @@ var server = app.listen(port,function(){
 	var db = mongoose.connection;
 	db.once('open', function() {
 		console.log('mongoose connected');
-		var routes = require('./routes')(app, mongoose);
+		var models = require("./schema")(mongoose);
+		var routes = require('./routes')(app, mongoose, models);
 		//app.use(routes);		
 	});
 	db.on('error', function(err){
