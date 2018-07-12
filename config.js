@@ -5,7 +5,7 @@ module.exports = {
 	},
 	schemas:{
 		users:{
-			"userId":"",
+			"_id":"",
 			"name":String,
 			"Date":Date
 		}			
